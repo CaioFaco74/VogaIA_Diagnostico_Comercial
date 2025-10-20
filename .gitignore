@@ -13,9 +13,13 @@ ENV/
 env.bak/
 venv.bak/
 
-# Environment variables
+# Environment variables - NUNCA commitar chaves de API!
 .env
 .env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
 
 # IDEs
 .vscode/
