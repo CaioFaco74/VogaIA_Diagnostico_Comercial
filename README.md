@@ -47,17 +47,37 @@ pip install -e .
 
 ## 🎯 Como Usar
 
-### 1. Executar Diagnóstico Completo
+### 1. Configurar API Key
+
+Antes de começar, configure sua API key da OpenAI:
+
+```bash
+# Copiar arquivo de exemplo
+cp .env.example .env
+
+# Editar .env e adicionar sua chave real
+# OPENAI_API_KEY=sk-sua-chave-aqui
+```
+
+📖 **Consulte o arquivo [SECURITY.md](SECURITY.md) para instruções detalhadas de segurança**
+
+### 2. Executar Plataforma Completa (Recomendado)
 
 ```bash
 # Ativar ambiente virtual
 source venv-python312/bin/activate
 
-# Executar diagnóstico
-python executar_diagnostico_completo.py
+# Executar diagnóstico + web app
+python3 start_platform.py
 ```
 
-### 2. Usar a Plataforma Web
+Isso irá:
+1. Executar os 8 agentes de IA
+2. Gerar relatórios completos
+3. Calcular todas as métricas
+4. Iniciar a aplicação web
+
+### 3. Usar a Plataforma Web
 
 #### Opção A: Script de Gerenciamento (Recomendado)
 ```bash
@@ -98,20 +118,40 @@ python web_app.py
 ## 📊 Estrutura do Projeto
 
 ```
-diagnostico_comercial_voga_ia/
+VogaIA_Diagnostico_Comercial/
 ├── src/
 │   └── diagnostico_comercial_voga_ia/
-│       ├── config/           # Configurações dos agentes
-│       ├── data/             # Dados de entrada e métricas
-│       ├── outputs/          # Relatórios gerados
-│       ├── tools/            # Ferramentas dos agentes
-│       └── main.py           # Execução principal
-├── templates/                # Templates HTML
-├── static/                   # CSS, JS e assets
+│       ├── config/           # Configurações dos agentes (YAML)
+│       ├── data/             # Dados de entrada e métricas calculadas
+│       ├── outputs/          # Relatórios gerados pelos agentes
+│       ├── tools/            # Ferramentas de cálculo de métricas
+│       ├── crew.py           # Definição dos 8 agentes CrewAI
+│       └── main.py           # Execução principal do diagnóstico
+├── tests/                    # 🆕 Testes automatizados
+│   ├── unit/                 # Testes unitários de componentes
+│   ├── integration/          # Testes de integração do fluxo
+│   ├── conftest.py           # Configurações do pytest
+│   └── README.md             # Documentação de testes
+├── scripts/                  # 🆕 Scripts auxiliares
+│   ├── legacy/               # Scripts antigos (referência)
+│   └── README.md             # Documentação de scripts
+├── templates/                # Templates HTML (Jinja2)
+├── static/                   # CSS, JS e assets web
+├── start_platform.py         # 🚀 Script principal (diagnóstico + web)
 ├── web_app.py               # Aplicação web Flask
-├── manage_web_app.sh        # Script de gerenciamento
-└── executar_*.py            # Scripts de execução
+├── SECURITY.md              # 🆕 Guia de segurança (API keys)
+├── .env.example             # Template de variáveis de ambiente
+├── .gitignore               # Arquivos ignorados pelo Git
+└── README.md                # Este arquivo
 ```
+
+### 📁 Descrição dos Diretórios Principais
+
+- **src/**: Código-fonte do sistema de diagnóstico
+- **tests/**: Testes automatizados (pytest) - [Ver documentação](tests/README.md)
+- **scripts/**: Scripts auxiliares e versões legacy - [Ver documentação](scripts/README.md)
+- **templates/**: Interface web (HTML + Jinja2)
+- **static/**: Recursos estáticos (CSS, JavaScript, imagens)
 
 ## 🔧 Configuração
 
@@ -134,6 +174,32 @@ Coloque seus dados comerciais em `src/diagnostico_comercial_voga_ia/data/dados_e
 - **Funil de Vendas**: Conversões, Taxa de fechamento
 - **Performance**: Produtividade, Eficiência
 - **Cliente**: Satisfação, Retenção, LTV
+
+## 🧪 Testes
+
+O projeto agora inclui testes automatizados organizados:
+
+```bash
+# Executar todos os testes
+pytest tests/
+
+# Apenas testes unitários
+pytest tests/unit/
+
+# Apenas testes de integração
+pytest tests/integration/
+
+# Com cobertura de código
+pytest tests/ --cov=src/diagnostico_comercial_voga_ia
+```
+
+📖 **Ver documentação completa em [tests/README.md](tests/README.md)**
+
+### Estrutura de Testes
+
+- **tests/unit/**: Testes unitários de ferramentas e funções
+- **tests/integration/**: Testes do fluxo completo dos agentes
+- **tests/conftest.py**: Configurações e fixtures compartilhadas
 
 ## 🎨 Interface Web
 

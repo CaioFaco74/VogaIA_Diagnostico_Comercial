@@ -9,7 +9,9 @@ from pathlib import Path
 
 # Importar as ferramentas diretamente
 import sys
-sys.path.append('/Users/caiofaco/Desktop/crewaivogaia/diagnostico_comercial_voga_ia/src')
+# Adicionar o diretório src ao path (relativo ao projeto)
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root / 'src'))
 
 try:
     from diagnostico_comercial_voga_ia.tools.diagnostico_tools import (
