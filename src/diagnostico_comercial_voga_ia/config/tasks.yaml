@@ -1,0 +1,270 @@
+collect_and_validate_data_task:
+  description: >
+    Coletar e validar os 27 inputs expandidos do cliente usando a ferramenta ler_dados_csv.
+    
+    AÇÃO: Use a ferramenta ler_dados_csv com o parâmetro "dados_entrada" para carregar os dados.
+    
+    DADOS BÁSICOS ESPERADOS (11 originais):
+    - Receita_Total: R$ 1.250.000
+    - Custo_Vendas_Marketing: R$ 350.000  
+    - Novos_Clientes: 125 pessoas
+    - Propostas_Enviadas: 425 unidades
+    - Leads_Gerados: 1.850 contatos
+    - Negocios_Fechados: 95 contratos
+    - Ciclo_Vendas_Dias: 45 dias
+    - Reps_Ativos: 8 pessoas
+    - Custo_Ferramentas: R$ 25.000
+    - Custo_Treinamento: R$ 15.000
+    - Clientes_Iniciais: 450, Clientes_Finais: 520
+    
+    NOVOS DADOS CONTEXTUAIS (4):
+    - Setor_Empresa: SaaS
+    - Porte_Empresa: Media
+    - Regiao_Atuacao: Sudeste
+    - Ano_Fundacao: 2018
+    
+    NOVOS DADOS FINANCEIROS (3):
+    - Custo_Produto_Vendido: R$ 400.000
+    - Meta_Receita_Periodo: R$ 1.500.000
+    - Margem_Bruta_Esperada: 60%
+    
+    NOVOS DADOS FUNIL (3):
+    - MQL_Gerados: 800
+    - SQL_Gerados: 400
+    - Reunioes_Realizadas: 300
+    
+    DADOS SPICED (5):
+    - Situacao_Atual: Crescimento_Acelerado
+    - Problema_Principal: CAC_Alto_Conversao_Baixa
+    - Impacto_Problema: Reducao_Margem_Crescimento_Lento
+    - Evento_Critico: Lancamento_Novo_Produto_Q4
+    - Decisao_Esperada: Otimizar_Marketing_Treinar_Vendas
+    
+    VALIDAÇÃO: Verificar se todos os 27 campos estão presentes e com valores válidos.
+    
+    AÇÃO FINAL OBRIGATÓRIA: Use a ferramenta salvar_relatorio_agente para salvar o relatório:
+    - conteudo_relatorio: Seu relatório completo em markdown
+    - nome_agente: "Data Collector"  
+    - numero_agente: 1
+  expected_output: >
+    Relatório de validação de dados em formato Markdown contendo:
+    1. Status de completude dos 27 inputs
+    2. Lista de inconsistências detectadas
+    3. Dados limpos e estruturados por categoria
+    4. Validação de dados SPICED
+    5. Recomendações para correções
+
+apply_data_governance_task:
+  description: >
+    Aplicar regras de governança de dados, detectar outliers e garantir integridade nos 27 inputs.
+    
+    REGRAS: Detectar outliers, aplicar regras de negócio, documentar transformações.
+    BENCHMARKS SETORIAIS: Usar Setor_Empresa e Porte_Empresa para benchmarks contextualizados.
+    - SaaS Media: CAC R$ 2.500, LTV R$ 15.000, Win Rate 22%, ROI 300%
+    - Varejo Media: CAC R$ 1.500, LTV R$ 8.000, Win Rate 30%, ROI 250%
+    - Serviços Media: CAC R$ 2.000, LTV R$ 12.000, Win Rate 25%, ROI 280%
+    
+    AÇÃO FINAL OBRIGATÓRIA: Use a ferramenta salvar_relatorio_agente para salvar o relatório:
+    - conteudo_relatorio: Seu relatório completo em markdown
+    - nome_agente: "Data Governance"
+    - numero_agente: 2
+  expected_output: >
+    Relatório de governança em Markdown contendo:
+    1. Outliers detectados e tratamento
+    2. Benchmarks setoriais aplicados
+    3. Regras de negócio aplicadas
+    4. Dataset final governado
+    5. Log de transformações
+
+calculate_all_metrics_task:
+  description: >
+    EXECUTAR TODAS AS FERRAMENTAS DE CÁLCULO COM DADOS REAIS DOS CSVs.
+    
+    PASSO 1 OBRIGATÓRIO: Use ler_dados_csv("dados_entrada") para obter os dados reais.
+    Você receberá dados como: Receita_Total: 1250000, Custo_Vendas_Marketing: 350000, etc.
+    
+    PASSO 2: Execute TODAS as ferramentas com os dados reais obtidos:
+    1. calcular_cac (use Custo_Vendas_Marketing e Novos_Clientes dos dados reais)
+    2. calcular_ltv (use Receita_Total e Clientes_Finais dos dados reais)
+    3. calcular_roi_simples (use Receita_Total e investimento dos dados reais)
+    4. calcular_ros (use Receita_Total e custos dos dados reais)
+    5. calcular_ticket_medio (use Receita_Total e Negocios_Fechados dos dados reais)
+    6. calcular_magic_number (use LTV e CAC calculados)
+    7. calcular_payback_period (use CAC, receita e novos clientes)
+    8. calcular_margem_bruta (use dados financeiros reais)
+    9. calcular_meta_achievement (use Receita_Total e Meta_Receita_Periodo)
+    10. calcular_roas (use Receita_Total e Custo_Vendas_Marketing)
+    11. calcular_win_rate (use Negocios_Fechados e Propostas_Enviadas)
+    12. calcular_pipeline_velocity (use ticket médio, win rate e ciclo)
+    13. calcular_produtividade_rep (use Receita_Total e Reps_Ativos)
+    14. calcular_conversoes_funil_detalhado (use todos os dados do funil)
+    15. calcular_produtividade_detalhada (use dados completos por rep)
+    16. calcular_churn_estimado (use dados de clientes)
+    17. salvar_metricas_csv (salve TODAS as métricas calculadas)
+    18. salvar_relatorio_agente (salve relatório COMPLETO com valores reais)
+    
+    IMPORTANTE: Use os valores REAIS dos CSVs, não valores fictícios.
+    FINAL: Relatório detalhado com TODAS as 16+ métricas calculadas e valores reais.
+  expected_output: >
+    Relatório completo de métricas em Markdown contendo:
+    1. Todas as 40 métricas calculadas com fórmulas
+    2. Categorização por tipo (Financeiras, Performance, Funil, Crescimento)
+    3. Interpretação de cada métrica
+    4. Comparação com benchmarks setoriais
+    5. Flags para métricas fora dos padrões
+
+analyze_business_insights_task:
+  description: >
+    ANALISE TODAS AS MÉTRICAS CALCULADAS pelo agente anterior.
+    
+    OBRIGATÓRIO: Execute estas ferramentas NA SEQUÊNCIA:
+    1. ler_dados_csv("metricas") - LEIA AS 39 MÉTRICAS CALCULADAS
+    2. ler_dados_csv("dados_entrada") - LEIA OS DADOS SPICED
+    3. analise_spiced (usar dados SPICED do cliente)
+    4. gerar_benchmark_setor (setor="SaaS", tamanho_empresa="Media") 
+    5. salvar_relatorio_agente
+    
+    FOQUE EM: CAC R$ 2.800, LTV R$ 2.403,85, ROI 257,14%, Win Rate 22,35%, urgência Q4, benchmarks SaaS.
+    
+    FINAL OBRIGATÓRIO: salvar_relatorio_agente com análise completa.
+    - conteudo_relatorio: Seu relatório completo de análise estratégica baseada em SPICED
+    - nome_agente: "Business Analyst"
+    - numero_agente: 4
+  expected_output: >
+    Relatório de análise estratégica em Markdown contendo:
+    1. Executive Summary com principais insights baseados em SPICED
+    2. Análise detalhada das 40 métricas por categoria
+    3. Identificação de gargalos prioritários no funil
+    4. Comparação com benchmarks SaaS Media
+    5. Oportunidades contextualizadas pelo evento crítico (Q4)
+    6. Recomendações priorizadas por impacto e urgência SPICED
+
+configure_monitoring_alerts_task:
+  description: >
+    Configurar sistema de monitoramento baseado nas 39 métricas calculadas.
+    
+    OBRIGATÓRIO: Execute NA SEQUÊNCIA:
+    1. ler_dados_csv("metricas") - LEIA AS 39 MÉTRICAS CALCULADAS
+    2. gerar_alertas com as métricas reais (CAC: 2800, LTV: 2403.85, ROI: 257.14, etc.)
+    3. Configure alertas contextualizados para SaaS Media
+    
+    ALERTAS CRÍTICOS SAAS: 
+    - Magic Number <3:1, Payback >12 meses, Meta Achievement <80%
+    - Churn Rate >15%, Lead→MQL <30%, MQL→SQL <40%
+    
+    ALERTAS ATENÇÃO SAAS:
+    - CAC >R$ 3.000, ROI <250%, Win Rate <20%
+    - Margem Bruta <55%, ROAS <3:1
+    
+    ALERTAS OPORTUNIDADE SAAS:
+    - Magic Number >5:1, Win Rate >30%, Growth Rate >20%
+    - Payback <6 meses, Meta Achievement >110%
+    
+    AÇÃO FINAL OBRIGATÓRIA: Use a ferramenta salvar_relatorio_agente para salvar o relatório:
+    - conteudo_relatorio: Relatório completo de alertas configurados
+    - nome_agente: "Alert Monitor"
+    - numero_agente: 5
+  expected_output: >
+    Relatório de configuração de alertas em Markdown contendo:
+    1. Sistema de alertas para as 40 métricas
+    2. Thresholds específicos para SaaS Media
+    3. Status atual de cada métrica crítica
+    4. Configurações de notificação priorizadas
+    5. Plano de resposta baseado na urgência SPICED
+
+create_visualizations_task:
+  description: >
+    Criar visualizações avançadas baseadas nas 39 métricas calculadas.
+    
+    OBRIGATÓRIO PRIMEIRO: ler_dados_csv("metricas") - LEIA AS 39 MÉTRICAS CALCULADAS
+    
+    VISUALIZAÇÕES OBRIGATÓRIAS:
+    1. Dashboard executivo com top 15 métricas reais do CSV
+    2. Funil detalhado: Lead→MQL→SQL→Reunião→Proposta→Fechamento
+    3. Análise Magic Number vs benchmarks SaaS
+    4. Matriz de produtividade por rep (7 métricas)
+    5. Análise de margem: Real vs Esperada vs Benchmark
+    6. Timeline SPICED com métricas priorizadas por evento Q4
+    
+    FORMATO: Markdown com tabelas avançadas, emojis, cores por status.
+    
+    AÇÃO FINAL OBRIGATÓRIA: Use a ferramenta salvar_relatorio_agente para salvar o relatório:
+    - conteudo_relatorio: Seu relatório completo de visualizações
+    - nome_agente: "Visualization Agent"
+    - numero_agente: 6
+  expected_output: >
+    Relatório de visualizações em Markdown contendo:
+    1. Dashboard executivo com 40 métricas organizadas
+    2. Gráficos de funil detalhado por etapa
+    3. Visualizações comparativas com benchmarks SaaS
+    4. Tabelas de produtividade por representante
+    5. Análises visuais contextualizadas por SPICED
+    6. Estruturas prontas para exportação Excel
+
+create_dashboard_prototype_task:
+  description: >
+    Criar protótipo de dashboard BI baseado nas 39 métricas e contexto SaaS.
+    
+    OBRIGATÓRIO PRIMEIRO: ler_dados_csv("metricas") - LEIA AS 39 MÉTRICAS CALCULADAS
+    
+    PASSO 2: Use criar_dashboard_specs com as métricas reais do CSV e páginas específicas para SaaS
+    
+    PÁGINAS ESPECÍFICAS SAAS:
+    1. Overview: Magic Number, Payback, Meta Achievement, Churn Rate
+    2. Funil SaaS: Lead→MQL→SQL→Reunião→Proposta (5 conversões)
+    3. Performance: Produtividade por rep (7 métricas), ROAS, eficiência
+    4. Financeiro: Margem Bruta vs Meta, CAC/LTV evolution, ROI breakdown
+    5. Alertas: Status das 40 métricas com código de cores
+    6. SPICED: Painel contextualizando urgência Q4 e áreas de foco
+    
+    FERRAMENTAS BI: Power BI (integração Excel), Metabase (open-source), Grafana (real-time)
+    
+    AÇÃO FINAL OBRIGATÓRIA: Use a ferramenta salvar_relatorio_agente para salvar o relatório:
+    - conteudo_relatorio: Especificações completas do dashboard SaaS
+    - nome_agente: "Dashboard Creator"
+    - numero_agente: 7
+  expected_output: >
+    Especificação completa do dashboard em Markdown contendo:
+    1. Wireframes das 6 páginas específicas para SaaS
+    2. Especificações técnicas para 40 métricas
+    3. Lista detalhada de KPIs por página
+    4. Integração com framework SPICED
+    5. Recomendações de ferramentas BI para SaaS
+    6. Roadmap de implementação priorizando evento Q4
+
+generate_executive_report_task:
+  description: >
+    Consolidar todas as métricas em um relatório executivo C-level baseado no framework SPICED.
+    
+    PASSO 1 OBRIGATÓRIO: ler_dados_csv("metricas") - LEIA AS MÉTRICAS CALCULADAS REAIS
+    PASSO 2 OBRIGATÓRIO: ler_dados_csv("dados_entrada") - LEIA OS DADOS SPICED E FINANCEIROS
+    
+    IMPORTANTE: Use os valores REAIS das métricas calculadas pelo agente anterior.
+    NÃO use valores zero ou fictícios. Use os dados reais do CSV de métricas.
+    
+    ESTRUTURA EXECUTIVE BASEADA EM SPICED:
+    1. SUMÁRIO EXECUTIVO: Situação atual (crescimento acelerado), problema (CAC R$ 2.800), impacto (margem), urgência (Q4)
+    2. ANÁLISE QUANTITATIVA: 39 métricas reais do CSV organizadas por prioridade SPICED
+    3. BENCHMARKING SAAS: Comparação com benchmarks específicos do setor
+    4. DIAGNÓSTICO FUNIL: Gargalos identificados em cada etapa (6 conversões)
+    5. PLANO DE AÇÃO SPICED: Iniciativas priorizadas por evento crítico Q4
+    6. ROADMAP 30/60/90: Timeline específica para lançamento Q4
+    
+    DECISÃO ESPERADA: Otimizar Marketing + Treinar Vendas (conforme SPICED)
+    EVENTO CRÍTICO: Lançamento Q4 (urgência definida)
+    FOCO: Reduzir CAC, aumentar conversão, preparar para escala Q4
+    
+    AÇÃO FINAL OBRIGATÓRIA: Use a ferramenta salvar_relatorio_agente para salvar o relatório:
+    - conteudo_relatorio: Seu relatório executivo completo baseado em SPICED
+    - nome_agente: "Report Generator"
+    - numero_agente: 8
+  expected_output: >
+    Relatório executivo C-level completo em Markdown contendo:
+    1. Sumário executivo contextualizado por SPICED (1-2 páginas)
+    2. Análise das 40 métricas organizadas por impacto no Q4
+    3. Benchmarking específico SaaS Media com gaps identificados
+    4. Diagnóstico completo do funil com 6 pontos de conversão
+    5. Plano de ação com 15+ iniciativas priorizadas para Q4
+    6. Timeline 30/60/90 dias alinhado com lançamento Q4
+    7. Projeções de ROI e impacto por iniciativa
+    8. Documento executivo pronto para tomada de decisão

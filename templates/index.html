@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Voga.IA - Diagnóstico Comercial Inteligente{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row min-vh-100 align-items-center">
+        <div class="col-lg-6">
+            <div class="text-center text-lg-start">
+                <h1 class="display-4 fw-bold text-primary mb-4">
+                    <i class="fas fa-chart-line me-3"></i>
+                    Voga.IA
+                </h1>
+                <h2 class="h3 text-muted mb-4">Diagnóstico Comercial Inteligente</h2>
+                <p class="lead mb-4">
+                    Transforme seus dados comerciais em insights acionáveis com nossa plataforma 
+                    de diagnóstico baseada em IA. Analise métricas, identifique oportunidades e 
+                    otimize seu funil de vendas.
+                </p>
+                
+                <div class="row g-3 mb-5">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-robot fa-2x text-primary mb-3"></i>
+                                <h5 class="card-title">8 Agentes Especializados</h5>
+                                <p class="card-text">IA avançada para análise completa do seu negócio</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-chart-pie fa-2x text-success mb-3"></i>
+                                <h5 class="card-title">40+ Métricas</h5>
+                                <p class="card-text">Análise detalhada de performance comercial</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-tachometer-alt fa-2x text-warning mb-3"></i>
+                                <h5 class="card-title">Dashboards Interativos</h5>
+                                <p class="card-text">Visualizações em tempo real</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-lightbulb fa-2x text-info mb-3"></i>
+                                <h5 class="card-title">Insights Inteligentes</h5>
+                                <p class="card-text">Recomendações baseadas em dados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg px-4 me-md-2">
+                        <i class="fas fa-sign-in-alt me-2"></i>
+                        Acessar Plataforma
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="text-center">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-5">
+                        <h3 class="mb-4">Acesse sua conta</h3>
+                        
+                        <form method="POST" action="{{ url_for('login') }}">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control form-control-lg" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Senha</label>
+                                <input type="password" class="form-control form-control-lg" id="password" name="password" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-sign-in-alt me-2"></i>
+                                    Entrar
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <hr class="my-4">
+                        
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <h6 class="text-muted">Admin</h6>
+                                <small class="text-muted">admin@vogaia.com<br>admin123</small>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="text-muted">Usuário</h6>
+                                <small class="text-muted">user@vogaia.com<br>user123</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

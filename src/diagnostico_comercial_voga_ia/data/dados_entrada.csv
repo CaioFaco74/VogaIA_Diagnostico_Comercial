@@ -1,0 +1,28 @@
+campo,valor,unidade,descricao
+Receita_Total,1250000,R$,Total de receita no período analisado
+Custo_Vendas_Marketing,350000,R$,Investimento total em vendas e marketing
+Novos_Clientes,125,Qtd,Número de novos clientes adquiridos
+Propostas_Enviadas,425,Qtd,Total de propostas comerciais enviadas
+Leads_Gerados,1850,Qtd,Leads qualificados gerados
+Negocios_Fechados,95,Qtd,Contratos efetivamente fechados
+Ciclo_Vendas_Dias,45,Dias,Tempo médio para fechar uma venda
+Reps_Ativos,8,Pessoas,Número de vendedores ativos
+Custo_Ferramentas,25000,R$,Gasto com CRM automação etc
+Custo_Treinamento,15000,R$,Investimento em capacitação
+Clientes_Iniciais,450,Qtd,Clientes no início do período
+Clientes_Finais,520,Qtd,Clientes no final do período
+Setor_Empresa,SaaS,Texto,Setor de atuação da empresa (SaaS/Varejo/Serviços/Indústria/Consultoria)
+Porte_Empresa,Media,Texto,Porte da empresa (Micro/Pequena/Media/Grande)
+Regiao_Atuacao,Sudeste,Texto,Principal região de atuação (Norte/Nordeste/Centro-Oeste/Sudeste/Sul)
+Ano_Fundacao,2018,Ano,Ano de fundação da empresa
+Custo_Produto_Vendido,400000,R$,COGS - Custo dos produtos ou serviços vendidos
+Meta_Receita_Periodo,1500000,R$,Meta de receita para o período analisado
+Margem_Bruta_Esperada,60,Percentual,Margem bruta ideal esperada pela empresa
+MQL_Gerados,800,Qtd,Marketing Qualified Leads gerados no período
+SQL_Gerados,400,Qtd,Sales Qualified Leads qualificados pela equipe
+Reunioes_Realizadas,300,Qtd,Total de reuniões comerciais realizadas
+Situacao_Atual,Crescimento_Acelerado,Texto,Situação atual da empresa (SPICED)
+Problema_Principal,CAC_Alto_Conversao_Baixa,Texto,Principal desafio comercial identificado (SPICED)
+Impacto_Problema,Reducao_Margem_Crescimento_Lento,Texto,Impacto do problema no negócio (SPICED)
+Evento_Critico,Lancamento_Novo_Produto_Q4,Texto,Evento ou deadline crítico (SPICED)
+Decisao_Esperada,Otimizar_Marketing_Treinar_Vendas,Texto,Decisão que a empresa precisa tomar (SPICED)

@@ -1,0 +1,29 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "diagnostico-comercial-voga-ia"
+version = "0.1.0"
+description = "Sistema de Diagnóstico Comercial Automatizado com CrewAI - 8 Agentes Especializados"
+authors = ["Caio Facó <caio@voga.ia>"]
+readme = "README.md"
+packages = [{include = "diagnostico_comercial_voga_ia", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.12.11"
+crewai = {extras = ["tools"], version = "^0.126.0"}
+pandas = "^2.0.0"
+numpy = "^1.24.0"
+openpyxl = "^3.1.0"
+pyyaml = "^6.0"
+python-dotenv = "^1.0.0"
+setuptools = "^80.9.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+black = "^23.0.0"
+flake8 = "^6.0.0"
+
+[tool.poetry.scripts]
+diagnostico_comercial_voga_ia = "diagnostico_comercial_voga_ia.main:run"

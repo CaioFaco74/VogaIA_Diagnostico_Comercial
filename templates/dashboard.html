@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Voga.IA{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="h3 mb-0">
+                <i class="fas fa-tachometer-alt me-2"></i>
+                Dashboard
+            </h1>
+            <a href="{{ url_for('run_diagnosis') }}" class="btn btn-primary">
+                <i class="fas fa-play me-2"></i>
+                Executar Diagnóstico
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Cards de Estatísticas -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card metric-card">
+            <div class="card-body text-center">
+                <i class="fas fa-chart-bar fa-2x mb-2"></i>
+                <h4 class="card-title">{{ stats.total_metricas }}</h4>
+                <p class="card-text">Total de Métricas</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card metric-card excelente">
+            <div class="card-body text-center">
+                <i class="fas fa-check-circle fa-2x mb-2"></i>
+                <h4 class="card-title">{{ stats.metricas_excelentes }}</h4>
+                <p class="card-text">Excelentes</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card metric-card atencao">
+            <div class="card-body text-center">
+                <i class="fas fa-exclamation-triangle fa-2x mb-2"></i>
+                <h4 class="card-title">{{ stats.metricas_atencao }}</h4>
+                <p class="card-text">Atenção</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card metric-card critico">
+            <div class="card-body text-center">
+                <i class="fas fa-times-circle fa-2x mb-2"></i>
+                <h4 class="card-title">{{ stats.metricas_criticas }}</h4>
+                <p class="card-text">Críticas</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Gráficos -->
+<div class="row mb-4">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    Métricas Financeiras
+                </h5>
+            </div>
+            <div class="card-body">
+                <div id="chart-financeiras"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-funnel me-2"></i>
+                    Funil de Vendas
+                </h5>
+            </div>
+            <div class="card-body">
+                <div id="chart-funil"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-chart-pie me-2"></i>
+                    Distribuição por Categoria
+                </h5>
+            </div>
+            <div class="card-body">
+                <div id="chart-categorias"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-list me-2"></i>
+                    Métricas Principais
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Métrica</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for metric in metrics[:10] %}
+                            <tr>
+                                <td>{{ metric.metrica }}</td>
+                                <td>
+                                    {% if metric.valor is number %}
+                                        {% if metric.categoria == 'Financeira' %}
+                                            R$ {{ "%.2f"|format(metric.valor) }}
+                                        {% else %}
+                                            {{ "%.2f"|format(metric.valor) }}
+                                        {% endif %}
+                                    {% else %}
+                                        {{ metric.valor }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <span class="badge bg-{{ 'success' if metric.status == 'excelente' else 'warning' if metric.status == 'atencao' else 'danger' }}">
+                                        {{ metric.status }}
+                                    </span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabela Completa de Métricas -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-table me-2"></i>
+                    Todas as Métricas
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="metrics-table">
+                        <thead>
+                            <tr>
+                                <th>Métrica</th>
+                                <th>Valor</th>
+                                <th>Categoria</th>
+                                <th>Benchmark</th>
+                                <th>Status</th>
+                                <th>Descrição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for metric in metrics %}
+                            <tr>
+                                <td><strong>{{ metric.metrica }}</strong></td>
+                                <td>
+                                    {% if metric.valor is number %}
+                                        {% if metric.categoria == 'Financeira' %}
+                                            R$ {{ "{:,.2f}".format(metric.valor) }}
+                                        {% else %}
+                                            {{ "{:,.2f}".format(metric.valor) }}
+                                        {% endif %}
+                                    {% else %}
+                                        {{ metric.valor }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <span class="badge bg-secondary">{{ metric.categoria }}</span>
+                                </td>
+                                <td>
+                                    {% if metric.benchmark_setor %}
+                                        {{ metric.benchmark_setor }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <span class="badge bg-{{ 'success' if metric.status == 'excelente' else 'warning' if metric.status == 'atencao' else 'danger' if metric.status == 'critico' else 'info' }}">
+                                        {{ metric.status }}
+                                    </span>
+                                </td>
+                                <td>{{ metric.descricao }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Carregar gráficos do Plotly
+{% if charts.financeiras %}
+    Plotly.newPlot('chart-financeiras', JSON.parse('{{ charts.financeiras | safe }}'));
+{% endif %}
+
+{% if charts.funil %}
+    Plotly.newPlot('chart-funil', JSON.parse('{{ charts.funil | safe }}'));
+{% endif %}
+
+{% if charts.categorias %}
+    Plotly.newPlot('chart-categorias', JSON.parse('{{ charts.categorias | safe }}'));
+{% endif %}
+
+// Atualizar dados a cada 30 segundos
+setInterval(function() {
+    fetch('/api/metrics')
+        .then(response => response.json())
+        .then(data => {
+            // Atualizar tabela de métricas
+            const tbody = document.querySelector('#metrics-table tbody');
+            tbody.innerHTML = '';
+            
+            data.forEach(metric => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${metric.metrica}</strong></td>
+                    <td>${metric.categoria === 'Financeira' ? 'R$ ' + parseFloat(metric.valor).toLocaleString('pt-BR', {minimumFractionDigits: 2}) : parseFloat(metric.valor).toLocaleString('pt-BR', {minimumFractionDigits: 2})}</td>
+                    <td><span class="badge bg-secondary">${metric.categoria}</span></td>
+                    <td>${metric.benchmark_setor || '-'}</td>
+                    <td><span class="badge bg-${metric.status === 'excelente' ? 'success' : metric.status === 'atencao' ? 'warning' : metric.status === 'critico' ? 'danger' : 'info'}">${metric.status}</span></td>
+                    <td>${metric.descricao}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        })
+        .catch(error => console.error('Erro ao atualizar dados:', error));
+}, 30000);
+</script>
+{% endblock %} 

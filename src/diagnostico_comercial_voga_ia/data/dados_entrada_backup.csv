@@ -1,0 +1,13 @@
+campo,valor,unidade,descricao
+Receita_Total,1250000,R$,Total de receita no período analisado
+Custo_Vendas_Marketing,350000,R$,Investimento total em vendas e marketing
+Novos_Clientes,125,Qtd,Número de novos clientes adquiridos
+Propostas_Enviadas,425,Qtd,Total de propostas comerciais enviadas
+Leads_Gerados,1850,Qtd,Leads qualificados gerados
+Negocios_Fechados,95,Qtd,Contratos efetivamente fechados
+Ciclo_Vendas_Dias,45,Dias,Tempo médio para fechar uma venda
+Reps_Ativos,8,Pessoas,Número de vendedores ativos
+Custo_Ferramentas,25000,R$,Gasto com CRM automação etc
+Custo_Treinamento,15000,R$,Investimento em capacitação
+Clientes_Iniciais,450,Qtd,Clientes no início do período
+Clientes_Finais,520,Qtd,Clientes no final do período

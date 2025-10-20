@@ -1,0 +1,49 @@
+metrica,valor,categoria,formula,benchmark_setor,status,descricao
+# MÉTRICAS FINANCEIRAS BÁSICAS (8),,,,,,
+CAC,2800.0,Financeira,Custo_Vendas_Marketing / Novos_Clientes,2500.0,atencao,Custo de Aquisição de Cliente
+LTV,2403.85,Financeira,Receita_Total / Novos_Clientes,15000.0,bom,Lifetime Value por cliente
+ROI,257.14,Financeira,(Receita - Custo_VM) / Custo_VM * 100,300.0,bom,Return on Investment
+ROS,72.0,Financeira,Lucro_Operacional / Receita * 100,15.0,excelente,Return on Sales
+Ticket_Medio,13157.89,Financeira,Receita_Total / Negocios_Fechados,10000.0,excelente,Valor médio por venda
+Magic_Number,0.86,Financeira,LTV / CAC,4.5,bom,Ratio LTV/CAC
+Payback_Period,3.4,Financeira,CAC / Receita_Mensal_Cliente,6.0,atencao,Meses para recuperar CAC
+Meta_Achievement,83.33,Financeira,Receita_Real / Meta * 100,100.0,atencao,Percentual de atingimento da meta
+# MÉTRICAS FINANCEIRAS AVANÇADAS (4),,,,,,
+Margem_Bruta_Real,68.0,Financeira,(Receita - COGS) / Receita * 100,60.0,excelente,Margem bruta real calculada
+Margem_Bruta_Esperada,60.0,Financeira,Meta definida pela empresa,60.0,benchmark,Margem bruta esperada
+ROAS,3.57,Financeira,Receita / Custo_Marketing,4.0,bom,Return on Ad Spend
+Diferenca_Margem,8.0,Financeira,Margem_Real - Margem_Esperada,0.0,excelente,Diferença margem real vs esperada
+# MÉTRICAS DE PERFORMANCE BÁSICAS (5),,,,,,
+Win_Rate,22.35,Performance,Negocios_Fechados / Propostas * 100,22.0,bom,Taxa de conversão geral
+Pipeline_Velocity_Diaria,65.35,Performance,(Ticket * Win_Rate) / Ciclo_Dias,100.0,atencao,Velocidade diária do pipeline
+Pipeline_Velocity_Mensal,1960.53,Performance,Pipeline_Velocity_Diaria * 30,3000.0,atencao,Velocidade mensal do pipeline
+Produtividade_Rep,156250.0,Performance,Receita_Total / Reps_Ativos,150000.0,excelente,Receita por representante
+Custo_Lead,189.19,Performance,Custo_Marketing / Leads_Gerados,200.0,excelente,Custo por lead gerado
+# MÉTRICAS DE FUNIL DETALHADO (6),,,,,,
+Lead_to_MQL,43.24,Funil,MQL_Gerados / Leads_Gerados * 100,40.0,excelente,Conversão Lead para MQL
+MQL_to_SQL,50.0,Funil,SQL_Gerados / MQL_Gerados * 100,45.0,excelente,Conversão MQL para SQL
+SQL_to_Reuniao,75.0,Funil,Reunioes / SQL_Gerados * 100,70.0,excelente,Conversão SQL para Reunião
+Reuniao_to_Proposta,141.67,Funil,Propostas / Reunioes * 100,80.0,excelente,Conversão Reunião para Proposta
+Proposta_to_Fechamento,22.35,Funil,Negocios / Propostas * 100,25.0,bom,Conversão Proposta para Fechamento
+Lead_to_Fechamento,5.14,Funil,Negocios / Leads * 100,5.0,excelente,Conversão total Lead para Fechamento
+# MÉTRICAS DE PRODUTIVIDADE POR REP (7),,,,,,
+Leads_por_Rep,231.25,Produtividade,Leads_Gerados / Reps_Ativos,200.0,excelente,Leads gerados por representante
+MQL_por_Rep,100.0,Produtividade,MQL_Gerados / Reps_Ativos,80.0,excelente,MQLs por representante
+SQL_por_Rep,50.0,Produtividade,SQL_Gerados / Reps_Ativos,40.0,excelente,SQLs por representante
+Reunioes_por_Rep,37.5,Produtividade,Reunioes / Reps_Ativos,35.0,excelente,Reuniões por representante
+Propostas_por_Rep,53.13,Produtividade,Propostas / Reps_Ativos,50.0,excelente,Propostas por representante
+Fechamentos_por_Rep,11.88,Produtividade,Negocios / Reps_Ativos,10.0,excelente,Fechamentos por representante
+Receita_por_Rep,156250.0,Produtividade,Receita_Total / Reps_Ativos,150000.0,excelente,Receita por representante
+# MÉTRICAS DE CRESCIMENTO E RETENÇÃO (4),,,,,,
+Growth_Rate_Clientes,15.56,Crescimento,(Finais - Iniciais) / Iniciais * 100,10.0,excelente,Taxa de crescimento de clientes
+Net_New_Clients,70.0,Crescimento,Clientes_Finais - Clientes_Iniciais,50.0,excelente,Novos clientes líquidos
+Churn_Rate_Estimado,8.7,Crescimento,(Esperados - Finais) / Esperados * 100,10.0,bom,Taxa de churn estimada
+Client_Acquisition_Rate,27.78,Crescimento,Novos_Clientes / Iniciais * 100,20.0,excelente,Taxa de aquisição de clientes
+# MÉTRICAS DE EFICIÊNCIA E INVESTIMENTO (4),,,,,,
+Investimento_Ferramentas_Rep,3125.0,Eficiencia,Custo_Ferramentas / Reps_Ativos,3000.0,bom,Investimento em ferramentas por rep
+Investimento_Treinamento_Rep,1875.0,Eficiencia,Custo_Treinamento / Reps_Ativos,2000.0,bom,Investimento em treinamento por rep
+Eficiencia_SQL,1142.86,Eficiencia,SQL_Gerados * 1000 / Custo_Marketing,1000.0,excelente,Eficiência na geração de SQLs
+Total_Investment_Client,3120.0,Eficiencia,(VM+Ferramentas+Treinamento) / Novos,3000.0,atencao,Investimento total por cliente
+# MÉTRICAS CONTEXTUAIS SPICED (2),,,,,,
+Idade_Empresa,7.0,Contexto,Ano_Atual - Ano_Fundacao,5.0,madura,Anos desde a fundação
+Urgencia_SPICED,3.0,Contexto,Meses até evento crítico,6.0,alta,Urgência baseada no evento crítico
